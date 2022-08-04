@@ -12,7 +12,7 @@ pipeline {
            steps {  
 		 
                 sh 'sudo docker build -t testwebapp:latest .' 
-                sh 'sudo docker tag testwebapp dockvenki/testwebapp:latest' 
+                
             }
         }
 
@@ -20,6 +20,7 @@ stage('Login to Docker hub') {
            steps {
               
                 sh 'sudo docker login --username=dockvenki --password=BS_venki@97'
+                sh 'sudo docker tag testwebapp:latest dockvenki/testwebapp:latest'
           }
         }
      
@@ -29,6 +30,11 @@ stage('Login to Docker hub') {
        	  sh  'sudo docker push dockvenki/testwebapp:latest'  
         }                 
           
+        }
+stage('pull') {
+            steps {
+                sh 'sudo docker pull dockvenki/testwebapp:latest'
+            }
         }     
       stage('Run Docker container on Jenkins Agent') {
              
