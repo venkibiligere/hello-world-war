@@ -40,7 +40,7 @@ stage('pull') {
              
             steps 
 	      {
-                sh "sudo docker run -d -p 8004:8080 venkibiligere/tomcatimages:testweb"
+                sh "sudo docker run -d -p 8085:8080 venkibiligere/tomcatimages:testweb"
              }
         }
  
