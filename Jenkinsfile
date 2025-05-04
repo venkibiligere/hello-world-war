@@ -11,7 +11,7 @@ pipeline {
   stage('Docker Build and Tag') {
            steps {  
 		 
-                sh 'docker build -t testwebapp:latest .' 
+                sh 'sudo docker build -t testwebapp:latest .' 
                 
             }
         }
