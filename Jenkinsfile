@@ -11,7 +11,7 @@ pipeline {
   stage('Docker Build and Tag') {
            steps {  
 		 
-                sh 'sudo docker build -t testwebapp:latest .' 
+                sh 'docker build -t testwebapp:latest .' 
                 
             }
         }
@@ -19,15 +19,15 @@ pipeline {
 stage('Login to Docker hub') {
            steps {
               
-                sh 'sudo docker login --username=venkibiligere --password=venki@0897'
-                sh 'sudo docker tag testwebapp:latest venkibiligere/tomcatimages:testweb'
+                sh 'docker login --username=venkibiligere --password=venki@0897'
+                sh 'docker tag testwebapp:latest venkibiligere/tomcatimages:testweb'
           }
         }
      
   stage('Publish image to Docker Hub') {
           
             steps {
-       	  sh  'sudo docker push venkibiligere/tomcatimages:testweb'  
+       	  sh  'docker push venkibiligere/tomcatimages:testweb'  
         }                 
           
         }
@@ -40,7 +40,7 @@ stage('pull') {
              
             steps 
 	      {
-                sh "sudo docker run -d -p 8085:8080 venkibiligere/tomcatimages:testweb"
+                sh "docker run -d -p 8085:8080 venkibiligere/tomcatimages:testweb"
              }
         }
  
